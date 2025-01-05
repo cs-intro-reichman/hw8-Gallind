@@ -30,7 +30,7 @@ public class Network {
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
         for (int i = 0; i < userCount; i++) {
-            if (users[i].getName() == name)
+            if (users[i].getName().toLowerCase().equals(name.toLowerCase()))
                 return users[i];
         }
         return null;
@@ -56,7 +56,7 @@ public class Network {
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
-        if (!userExists(name2) || !userExists(name1)) return false;
+        if (!userExists(name2) || !userExists(name1) || name1.equals(name2)) return false;
         User user1 = getUser(name1);
         return user1.addFollowee(name2);
     }
@@ -82,6 +82,7 @@ public class Network {
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
+        if (userCount == 0) return null;
         User popUser = null;
         int maxFollows = -1;
         for (int i = 0; i < userCount; i++){
@@ -108,9 +109,9 @@ public class Network {
 
     // Returns a textual description of all the users in this network, and who they follow.
     public String toString() {
-        String ans = "";
+        String ans = "Network:";
         for (int i = 0; i < userCount; i++){
-            ans += users[i].toString() + "\n";
+            ans += "\n" + users[i].toString();
         }
        return ans;
     }
