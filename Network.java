@@ -40,6 +40,7 @@ public class Network {
             if (users[i].getName() == name)
                 return true;
         }
+        //return getUser(name) != null;
         return false;
     }
     /** Adds a new user with the given name to this network.

@@ -73,7 +73,6 @@
         while (follows[i] != name){
             i++;
         }
-        
         while (i < fCount - 1) {
             follows[i] = follows[++i];
         }
