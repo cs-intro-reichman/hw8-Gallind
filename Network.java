@@ -35,14 +35,16 @@ public class Network {
         }
         return null;
     }
+
+    //check if the user exists in the network
     private boolean userExists(String name){
         for (int i = 0; i < userCount; i++) {
             if (users[i].getName() == name)
                 return true;
         }
-        //return getUser(name) != null;
         return false;
     }
+
     /** Adds a new user with the given name to this network.
     *  If ths network is full, does nothing and returns false;
     *  If the given name is already a user in this network, does nothing and returns false;
@@ -68,9 +70,7 @@ public class Network {
         User maxUser = null;
         int maxMutuals = -1;
         for (int i = 0; i < userCount; i++){
-            if (users[i].getName() == name){
-                continue;
-            }
+            if (users[i].getName() == name) continue;
             int mutuals = users[i].countMutual(getUser(name));
             if (mutuals > maxMutuals){
                 maxMutuals = mutuals;
