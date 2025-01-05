@@ -6,7 +6,7 @@
       "run": "java Test USER_FOLLOWS",
       "comparison": "included",
       "input": "",
-      "output": "All test cases have passed",
+      "output": "All test cases have passed", 
       "timeout": 10,
       "points": 8
     },
